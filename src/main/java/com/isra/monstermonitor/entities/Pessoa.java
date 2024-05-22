@@ -11,6 +11,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,14 +29,17 @@ public class Pessoa {
 
     private String nome;
     private Integer totalConsumidos = 0;
+    private BigDecimal totalGasto = BigDecimal.ZERO;
     private LocalDateTime updatedAt;
     private LocalDateTime createdAt = LocalDateTime.now();
 
-    @OneToMany
-    private List<Debito> debitos = new ArrayList<>();
-
     public void addConsumo() {
         this.totalConsumidos++;
+        this.atualizarValorASerPago();
         this.updatedAt = LocalDateTime.now();
+    }
+
+    private void atualizarValorASerPago() {
+        this.totalGasto = totalGasto.add(BigDecimal.TEN);
     }
 }

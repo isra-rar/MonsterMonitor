@@ -18,6 +18,4 @@ public class PessoaDTOResponse {
     private Integer totalConsumidos;
     private LocalDateTime createdAt;
 
-    private List<Debito> debitos;
-
 }
